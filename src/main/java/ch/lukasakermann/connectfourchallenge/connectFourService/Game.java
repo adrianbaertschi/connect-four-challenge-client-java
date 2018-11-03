@@ -11,20 +11,20 @@ public class Game {
     private final boolean finished;
     private final String currentPlayerId;
     private final List<Player> players;
-    private final List<List<String>> board;
+    private final Board board;
 
     @JsonCreator
     public Game(@JsonProperty("winner") String winner,
                 @JsonProperty("currentPlayerId") String currentPlayerId,
                 @JsonProperty("finished") boolean finished,
                 @JsonProperty("players") List<Player> players,
-                @JsonProperty("board") List<List<String>> board) {
+                @JsonProperty("board") List<List<String>> rows) {
 
         this.winner = winner;
         this.finished = finished;
         this.currentPlayerId = currentPlayerId;
         this.players = players;
-        this.board = board;
+        this.board = new Board(rows);
     }
 
     public String getWinner() {
@@ -39,7 +39,7 @@ public class Game {
         return players;
     }
 
-    public List<List<String>> getBoard() {
+    public Board getBoard() {
         return board;
     }
 

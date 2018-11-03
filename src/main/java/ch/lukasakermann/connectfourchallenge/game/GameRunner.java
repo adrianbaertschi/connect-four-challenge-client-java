@@ -63,9 +63,13 @@ public class GameRunner implements Runnable {
             }
             LocalDateTime endTime = LocalDateTime.now();
             long durationInSeconds = Duration.between(startTime, endTime).getSeconds();
-            LOGGER.info("Games are finished: {}, won {}, draw {}, duration {}s", playerId, gamesWon, gamesDraw, durationInSeconds);
+            LOGGER.info("Games are finished: {} with {}, won {}, draw {}, duration {}s",
+                    playerId, connectFourStrategy.getClass().getName(), gamesWon, gamesDraw, durationInSeconds);
         } catch (InterruptedException e) {
             LOGGER.error("Games are interrupted: {}", e);
+        } catch (Throwable t) {
+            t.printStackTrace();
         }
+
     }
 }

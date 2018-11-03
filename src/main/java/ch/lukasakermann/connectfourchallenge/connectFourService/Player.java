@@ -20,6 +20,6 @@ public class Player {
     }
 
     public String getDisc() {
-        return disc;
+        return disc.substring(0, 1);
     }
 }
